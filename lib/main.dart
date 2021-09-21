@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:protofast/features/user_login.dart';
+import 'package:protofast/models/project.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +29,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Project myProject =
+      Project('WeTube', [UserLogin()], [Platforms.android, Platforms.web]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const <Widget>[
-          Text('Your Projects'),
+        children: [
+          const Text('Your Project'),
+          _projectInfoWidget(myProject),
+          const Text('Your Features'),
         ],
       ),
       floatingActionButton: const FloatingActionButton(
@@ -46,4 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+Widget _projectInfoWidget(Project project) {
+  return Column(
+    children: [
+      Text('Project name: ' + project.name),
+      const Text('Platforms: '),
+      ...project.platforms.map((platform) => Text(platform.toString())).toList()
+    ],
+  );
 }
