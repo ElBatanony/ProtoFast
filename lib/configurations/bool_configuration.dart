@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:protofast/models/configuration.dart';
 
 class BoolConfiguration extends Configuration {
@@ -8,5 +9,10 @@ class BoolConfiguration extends Configuration {
   @override
   String generateSpecifications() {
     return question + ': ' + isEnabled.toString();
+  }
+
+  @override
+  Widget configurationWidget() {
+    return Row(children: [Text(question), Text(isEnabled.toString())]);
   }
 }
