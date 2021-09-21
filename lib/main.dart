@@ -56,15 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
           myProject.generateSRS()
         ],
       ),
-      floatingActionButton: const FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
 
+// ignore: unused_element
 Widget _projectInfoWidget(Project project) {
   return Column(
     children: [
