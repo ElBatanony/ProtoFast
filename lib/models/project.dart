@@ -15,4 +15,6 @@ class Project {
       ...features.map((feature) => feature.generateSpecification()).toList()
     ]);
   }
+
+  // TODO: save and load project and features (use Shared Prefrences)
 }
