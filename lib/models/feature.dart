@@ -11,15 +11,19 @@ abstract class Feature {
 
   Widget generateSpecification() {
     return Column(children: [
-      Text(name),
+      featureNameWidget(),
       ...configs.map((config) => Text(config.generateSpecifications())).toList()
     ]);
   }
 
   Widget featureWidget() {
-    return Column(children: [
-      Text(name),
+    return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+      featureNameWidget(),
       ...configs.map((config) => config.configurationWidget()).toList()
     ]);
+  }
+
+  Widget featureNameWidget() {
+    return Text(name, style: const TextStyle(fontSize: 24));
   }
 }
