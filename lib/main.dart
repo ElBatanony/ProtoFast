@@ -32,6 +32,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Project myProject =
       Project('WeTube', [UserLogin()], [Platforms.android, Platforms.web]);
 
+  void generateSRS() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,10 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           const Text('Your Project'),
           _projectInfoWidget(myProject),
+          const Divider(),
           const Text('Your Features'),
           ...myProject.features
               .map((feature) => feature.featureWidget())
-              .toList()
+              .toList(),
+          const Divider(),
+          const Text('Requirements Specfication'),
+          ElevatedButton(
+              onPressed: generateSRS, child: const Text('Generate SRS')),
+          myProject.generateSRS()
         ],
       ),
       floatingActionButton: const FloatingActionButton(
