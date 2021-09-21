@@ -45,9 +45,6 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Your Project'),
-          _projectInfoWidget(myProject),
-          const Divider(),
           const Text('Your Features'),
           ...myProject.features
               .map((feature) => feature.featureWidget())
