@@ -2,14 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:protofast/models/configuration.dart';
 
 class StringConfiguration extends Configuration<String> {
-  String value;
-
-  StringConfiguration(String question, this.value) : super(question);
-
-  @override
-  String generateSpecifications() {
-    return question + ': ' + value;
-  }
+  StringConfiguration(String question, String value) : super(question, value);
 
   @override
   Widget configurationWidget() {
