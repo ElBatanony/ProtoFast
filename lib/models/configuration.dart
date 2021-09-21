@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class Configuration {
+abstract class Configuration<T> {
   String question;
   String? description;
   int? estimation;
@@ -10,4 +10,6 @@ abstract class Configuration {
   String generateSpecifications();
 
   Widget configurationWidget();
+
+  void setConfiguration(T newConfig);
 }

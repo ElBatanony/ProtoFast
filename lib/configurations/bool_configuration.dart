@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/models/configuration.dart';
 
-class BoolConfiguration extends Configuration {
+class BoolConfiguration extends Configuration<bool> {
   bool isEnabled = false;
 
   BoolConfiguration(String question, this.isEnabled) : super(question);
@@ -16,6 +16,7 @@ class BoolConfiguration extends Configuration {
     return BoolConfigurationWidget(boolConfig: this);
   }
 
+  @override
   void setConfiguration(bool newConfig) {
     isEnabled = newConfig;
   }

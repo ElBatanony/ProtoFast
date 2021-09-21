@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/models/configuration.dart';
 
-class StringConfiguration extends Configuration {
+class StringConfiguration extends Configuration<String> {
   String value;
 
   StringConfiguration(String question, this.value) : super(question);
@@ -16,6 +16,7 @@ class StringConfiguration extends Configuration {
     return StringConfigurationWidget(boolConfig: this);
   }
 
+  @override
   void setConfiguration(String newConfig) {
     value = newConfig;
   }
