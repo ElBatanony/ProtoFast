@@ -14,5 +14,7 @@ abstract class Configuration<T> {
 
   Widget configurationWidget();
 
-  void setConfiguration(T newConfig);
+  void setConfiguration(T newConfig) {
+    value = newConfig;
+  }
 }

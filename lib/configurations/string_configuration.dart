@@ -8,11 +8,6 @@ class StringConfiguration extends Configuration<String> {
   Widget configurationWidget() {
     return StringConfigurationWidget(boolConfig: this);
   }
-
-  @override
-  void setConfiguration(String newConfig) {
-    value = newConfig;
-  }
 }
 
 class StringConfigurationWidget extends StatefulWidget {

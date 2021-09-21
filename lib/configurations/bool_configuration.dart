@@ -9,10 +9,6 @@ class BoolConfiguration extends Configuration<bool> {
     return BoolConfigurationWidget(boolConfig: this);
   }
 
-  @override
-  void setConfiguration(bool newConfig) {
-    isEnabled = newConfig;
-  }
   bool isEnabled() => value;
 }
 
