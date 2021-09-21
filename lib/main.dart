@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/features/user_login.dart';
+import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
+import 'package:protofast/screens/srs_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,8 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Project myProject =
       Project('WeTube', [UserLogin()], [Platforms.android, Platforms.web]);
 
-  void generateSRS() {
+  void goToSRS() {
     setState(() {});
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SRSScreen(project: myProject)),
+    );
   }
 
   @override
@@ -43,17 +49,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('ProtoFast'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('Your Features'),
-          ...myProject.features
-              .map((feature) => feature.featureWidget())
-              .toList(),
-          const Divider(),
-          const Text('Requirements Specfication'),
-          ElevatedButton(
-              onPressed: generateSRS, child: const Text('Generate SRS')),
-          myProject.generateSRS()
+          const Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Text(
+              'Your Features',
+              style: TextStyle(fontSize: 36),
+            ),
+          ),
+          featuresList(myProject.features),
+          ElevatedButton(onPressed: goToSRS, child: const Text('Generate SRS')),
         ],
       ),
     );
@@ -69,4 +74,10 @@ Widget _projectInfoWidget(Project project) {
       ...project.platforms.map((platform) => Text(platform.toString())).toList()
     ],
   );
+}
+
+Widget featuresList(List<Feature> features) {
+  return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: features.map((feature) => feature.featureWidget()).toList());
 }
