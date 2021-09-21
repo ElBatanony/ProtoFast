@@ -34,13 +34,9 @@ class BoolConfigurationWidget extends StatefulWidget {
 }
 
 class _BoolConfigurationWidgetState extends State<BoolConfigurationWidget> {
-  bool isEnabled = false;
-
   @override
   void initState() {
-    setState(() {
-      isEnabled = widget.boolConfig.isEnabled;
-    });
+    setState(() {});
     super.initState();
   }
 
@@ -49,16 +45,12 @@ class _BoolConfigurationWidgetState extends State<BoolConfigurationWidget> {
     return Row(children: [
       Text(widget.boolConfig.question),
       Switch(
-        value: isEnabled,
-        onChanged: (value) {
-          setState(() {
-            isEnabled = value;
-            widget.boolConfig.setConfiguration(isEnabled);
-          });
-        },
-        activeTrackColor: Colors.lightGreenAccent,
-        activeColor: Colors.green,
-      )
+          value: widget.boolConfig.isEnabled(),
+          onChanged: (value) {
+            setState(() {
+              widget.boolConfig.setConfiguration(value);
+            });
+          })
     ]);
   }
 }
