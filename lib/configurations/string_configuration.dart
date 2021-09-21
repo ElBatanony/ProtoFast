@@ -22,13 +22,12 @@ class StringConfigurationWidget extends StatefulWidget {
 }
 
 class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
-  String value = "";
   TextEditingController controller = TextEditingController(text: '');
 
   @override
   void initState() {
     setState(() {
-      value = widget.boolConfig.value;
+      controller.text = widget.boolConfig.value;
     });
     super.initState();
   }
@@ -37,13 +36,12 @@ class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
   Widget build(BuildContext context) {
     return Column(children: [
       TextField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: widget.boolConfig.question,
         ),
-        controller: controller,
         onChanged: (value) {
           setState(() {
-            value = value;
             widget.boolConfig.setConfiguration(value);
           });
         },
