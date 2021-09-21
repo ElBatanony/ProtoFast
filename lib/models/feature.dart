@@ -15,4 +15,11 @@ abstract class Feature {
       ...configs.map((config) => Text(config.generateSpecifications())).toList()
     ]);
   }
+
+  Widget featureWidget() {
+    return Column(children: [
+      Text(name),
+      ...configs.map((config) => config.configurationWidget()).toList()
+    ]);
+  }
 }
