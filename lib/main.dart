@@ -44,6 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
           const Text('Your Project'),
           _projectInfoWidget(myProject),
           const Text('Your Features'),
+          ...myProject.features
+              .map((feature) => feature.featureWidget())
+              .toList()
         ],
       ),
       floatingActionButton: const FloatingActionButton(
