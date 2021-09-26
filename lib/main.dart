@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/features/user_login.dart';
+import 'package:protofast/features/user_profile.dart';
 import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/srs_screen.dart';
@@ -31,8 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Project myProject =
-      Project('WeTube', [UserLogin()], [Platforms.android, Platforms.web]);
+  Project myProject = Project('WeTube', [UserLogin(), UserProfile()],
+      [Platforms.android, Platforms.web]);
 
   void goToSRS() {
     setState(() {});

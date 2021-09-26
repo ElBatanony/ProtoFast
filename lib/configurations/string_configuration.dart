@@ -6,15 +6,15 @@ class StringConfiguration extends Configuration<String> {
 
   @override
   Widget configurationWidget() {
-    return StringConfigurationWidget(boolConfig: this);
+    return StringConfigurationWidget(stringConfig: this);
   }
 }
 
 class StringConfigurationWidget extends StatefulWidget {
-  const StringConfigurationWidget({Key? key, required this.boolConfig})
+  const StringConfigurationWidget({Key? key, required this.stringConfig})
       : super(key: key);
 
-  final StringConfiguration boolConfig;
+  final StringConfiguration stringConfig;
 
   @override
   _StringConfigurationWidgetState createState() =>
@@ -27,7 +27,7 @@ class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
   @override
   void initState() {
     setState(() {
-      controller.text = widget.boolConfig.value;
+      controller.text = widget.stringConfig.value;
     });
     super.initState();
   }
@@ -38,11 +38,11 @@ class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
       TextField(
         controller: controller,
         decoration: InputDecoration(
-          labelText: widget.boolConfig.question,
+          labelText: widget.stringConfig.question,
         ),
         onChanged: (value) {
           setState(() {
-            widget.boolConfig.setConfiguration(value);
+            widget.stringConfig.setConfiguration(value);
           });
         },
       )
