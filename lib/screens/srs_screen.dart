@@ -19,6 +19,7 @@ class SRSScreen extends StatelessWidget {
               style: TextStyle(fontSize: 36),
             ),
             project.generateSRS(),
+            SizedBox(width: 16.0, height: 16.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);

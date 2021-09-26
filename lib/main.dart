@@ -46,23 +46,26 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProtoFast'),
-      ),
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Text(
-              'Your Features',
-              style: TextStyle(fontSize: 36),
-            ),
+        appBar: AppBar(
+          title: const Text('ProtoFast'),
+        ),
+        body: Center(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  'Your Features',
+                  style: TextStyle(fontSize: 36),
+                ),
+              ),
+              featuresList(myProject.features),
+              SizedBox(width: 16.0, height: 16.0),
+              ElevatedButton(
+                  onPressed: goToSRS, child: const Text('Generate SRS')),
+            ],
           ),
-          featuresList(myProject.features),
-          ElevatedButton(onPressed: goToSRS, child: const Text('Generate SRS')),
-        ],
-      ),
-    );
+        ));
   }
 }
 

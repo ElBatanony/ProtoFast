@@ -36,9 +36,13 @@ class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
   Widget build(BuildContext context) {
     return Column(children: [
       TextField(
+        textAlign: TextAlign.center,
         controller: controller,
         decoration: InputDecoration(
           labelText: widget.stringConfig.question,
+          alignLabelWithHint: true,
+          border: OutlineInputBorder(),
+          focusedBorder: OutlineInputBorder(),
         ),
         onChanged: (value) {
           setState(() {

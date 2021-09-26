@@ -12,7 +12,24 @@ class Project {
 
   Widget generateSRS() {
     return Column(children: [
-      ...features.map((feature) => feature.generateSpecification()).toList()
+      SizedBox(height: 20.0),
+      Column(children: [
+        ...features
+            .map(
+              (feature) => Container(
+                  height: 100,
+                  width: 600,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.blue,
+                    ),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Center(child: feature.generateSpecification())),
+            )
+            .toList(),
+        SizedBox(height: 40),
+      ])
     ]);
   }
 

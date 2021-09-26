@@ -6,8 +6,9 @@ abstract class Feature {
   List<Configuration> configs;
   int? estimation;
   int? priority;
+  IconData icon;
 
-  Feature(this.name, this.configs, {this.estimation, this.priority});
+  Feature(this.name, this.icon, this.configs, {this.estimation, this.priority});
 
   Widget generateSpecification() {
     return Column(children: [
@@ -17,13 +18,23 @@ abstract class Feature {
   }
 
   Widget featureWidget() {
-    return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      featureNameWidget(),
-      ...configs.map((config) => config.configurationWidget()).toList()
+    return Column(children: [
+      Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [featureNameWidget(), featureIconWidget()]),
+      ...configs.map((config) => config.configurationWidget()).toList(),
+      SizedBox(height: 40),
     ]);
   }
 
   Widget featureNameWidget() {
     return Text(name, style: const TextStyle(fontSize: 24));
+  }
+
+  Widget featureIconWidget() {
+    return Icon(
+      icon,
+    );
   }
 }
