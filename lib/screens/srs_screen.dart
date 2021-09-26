@@ -15,7 +15,7 @@ class SRSScreen extends StatelessWidget {
         child: Column(
           children: [
             const Text(
-              'Requirements Specfication',
+              'Requirements Specification',
               style: TextStyle(fontSize: 36),
             ),
             project.generateSRS(),
