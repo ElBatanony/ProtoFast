@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/models/project.dart';
 
-class SRSScreen extends StatelessWidget {
+class SrsScreen extends StatelessWidget {
   final Project project;
-  const SRSScreen({Key? key, required this.project}) : super(key: key);
+  const SrsScreen({Key? key, required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class SRSScreen extends StatelessWidget {
         child: Column(
           children: [
             const Text(
-              'Requirements Specfication',
+              'Requirements Specification',
               style: TextStyle(fontSize: 36),
             ),
             project.generateSRS(),
