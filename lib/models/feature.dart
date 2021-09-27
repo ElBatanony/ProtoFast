@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:protofast/models/configuration.dart';
 
 abstract class Feature {
@@ -11,10 +12,18 @@ abstract class Feature {
   Feature(this.name, this.icon, this.configs, {this.estimation, this.priority});
 
   Widget generateSpecification() {
-    return Column(children: [
-      featureNameWidget(),
-      ...configs.map((config) => Text(config.generateSpecifications())).toList()
-    ]);
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        featureNameWidget(),
+        ...configs
+            .map((config) => Text(
+                  config.generateSpecifications(),
+                  textAlign: TextAlign.center,
+                ))
+            .toList()
+      ]),
+    );
   }
 
   Widget featureWidget() {
@@ -24,7 +33,7 @@ abstract class Feature {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [featureNameWidget()]),
       ...configs.map((config) => config.configurationWidget()).toList(),
-      SizedBox(height: 40),
+      const SizedBox(height: 3)
     ]);
   }
 
