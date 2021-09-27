@@ -9,7 +9,7 @@ class SRSScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SRS"),
+        title: const Text("Requirements Specifications"),
       ),
       body: Center(
         child: Column(
