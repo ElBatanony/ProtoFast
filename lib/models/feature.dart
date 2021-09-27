@@ -22,7 +22,7 @@ abstract class Feature {
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [featureNameWidget(), featureIconWidget()]),
+          children: [featureNameWidget()]),
       ...configs.map((config) => config.configurationWidget()).toList(),
       SizedBox(height: 40),
     ]);
