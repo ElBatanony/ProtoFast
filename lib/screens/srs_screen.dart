@@ -19,7 +19,7 @@ class SRSScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('Go back!'),
+              child: const Text('Back to Features'),
             ),
           ],
         ),
