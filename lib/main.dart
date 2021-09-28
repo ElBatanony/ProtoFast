@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ProtoFast',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: const MyHomePage(),
     );
@@ -47,23 +47,28 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ProtoFast'),
+          title: const Text('ProtoFast v0.1.0'),
         ),
         body: Center(
-          child: Column(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text(
-                  'Your Features',
-                  style: TextStyle(fontSize: 36),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    'Your Features',
+                    style: TextStyle(fontSize: 36),
+                  ),
                 ),
-              ),
-              featuresList(myProject.features),
-              SizedBox(width: 16.0, height: 16.0),
-              ElevatedButton(
-                  onPressed: goToSRS, child: const Text('Generate SRS')),
-            ],
+                featuresList(myProject.features),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: goToSRS, child: const Text('Generate SRS')),
+              ],
+            ),
           ),
         ));
   }
