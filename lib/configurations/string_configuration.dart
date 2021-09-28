@@ -34,22 +34,22 @@ class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      TextField(
-        textAlign: TextAlign.center,
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: widget.stringConfig.question,
-          alignLabelWithHint: true,
-          border: OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(),
-        ),
-        onChanged: (value) {
-          setState(() {
-            widget.stringConfig.setConfiguration(value);
-          });
-        },
-      )
-    ]);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(children: [
+        Text(widget.stringConfig.question),
+        const SizedBox(height: 8),
+        TextField(
+          textAlign: TextAlign.center,
+          controller: controller,
+          decoration: const InputDecoration(border: OutlineInputBorder()),
+          onChanged: (value) {
+            setState(() {
+              widget.stringConfig.setConfiguration(value);
+            });
+          },
+        )
+      ]),
+    );
   }
 }
