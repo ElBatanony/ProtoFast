@@ -9,21 +9,17 @@ class SrsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SRS"),
+        title: const Text("Requirements Specifications"),
       ),
       body: Center(
         child: Column(
           children: [
-            const Text(
-              'Requirements Specification',
-              style: TextStyle(fontSize: 36),
-            ),
             project.generateSRS(),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: const Text('Go back!'),
+              child: const Text('Back to Features'),
             ),
           ],
         ),

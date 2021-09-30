@@ -32,15 +32,18 @@ class _BoolConfigurationWidgetState extends State<BoolConfigurationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      Text(widget.boolConfig.question),
-      Switch(
-          value: widget.boolConfig.isEnabled(),
-          onChanged: (value) {
-            setState(() {
-              widget.boolConfig.setConfiguration(value);
-            });
-          })
-    ]);
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(widget.boolConfig.question),
+          Switch(
+              value: widget.boolConfig.isEnabled(),
+              onChanged: (value) {
+                setState(() {
+                  widget.boolConfig.setConfiguration(value);
+                });
+              })
+        ]);
   }
 }
