@@ -6,15 +6,15 @@ class StringConfiguration extends Configuration<String> {
 
   @override
   Widget configurationWidget() {
-    return StringConfigurationWidget(boolConfig: this);
+    return StringConfigurationWidget(stringConfig: this);
   }
 }
 
 class StringConfigurationWidget extends StatefulWidget {
-  const StringConfigurationWidget({Key? key, required this.boolConfig})
+  const StringConfigurationWidget({Key? key, required this.stringConfig})
       : super(key: key);
 
-  final StringConfiguration boolConfig;
+  final StringConfiguration stringConfig;
 
   @override
   _StringConfigurationWidgetState createState() =>
@@ -27,25 +27,29 @@ class _StringConfigurationWidgetState extends State<StringConfigurationWidget> {
   @override
   void initState() {
     setState(() {
-      controller.text = widget.boolConfig.value;
+      controller.text = widget.stringConfig.value;
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: widget.boolConfig.question,
-        ),
-        onChanged: (value) {
-          setState(() {
-            widget.boolConfig.setConfiguration(value);
-          });
-        },
-      )
-    ]);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(children: [
+        Text(widget.stringConfig.question),
+        const SizedBox(height: 8),
+        TextField(
+          textAlign: TextAlign.center,
+          controller: controller,
+          decoration: const InputDecoration(border: OutlineInputBorder()),
+          onChanged: (value) {
+            setState(() {
+              widget.stringConfig.setConfiguration(value);
+            });
+          },
+        )
+      ]),
+    );
   }
 }
