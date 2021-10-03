@@ -16,5 +16,14 @@ class Project {
     ]);
   }
 
+  Project.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        features = [],
+        platforms = [];
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+      };
+
   // TODO: save and load project and features (use Shared Prefrences)
 }
