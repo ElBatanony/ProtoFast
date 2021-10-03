@@ -4,6 +4,7 @@ import 'package:protofast/features/user_profile.dart';
 import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/srs_screen.dart';
+import 'package:protofast/screens/user_content_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {});
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SrsScreen(project: myProject)),
+      //MaterialPageRoute(builder: (context) => SrsScreen(project: myProject)),
+      MaterialPageRoute(builder: (context) => const UserContentScreen()),
     );
   }
 
