@@ -40,8 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {});
     Navigator.push(
       context,
-      //MaterialPageRoute(builder: (context) => SrsScreen(project: myProject)),
-      MaterialPageRoute(builder: (context) => const UserContentScreen()),
+      MaterialPageRoute(builder: (context) => SrsScreen(project: myProject)),
     );
   }
 
