@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:protofast/data/projects_manager.dart';
 import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/srs_screen.dart';
@@ -19,6 +20,13 @@ class _ProjectScreenState extends State<ProjectScreen> {
       context,
       MaterialPageRoute(
           builder: (context) => SrsScreen(project: widget.project)),
+    );
+  }
+
+  Future<void> deleteProject() async{
+    ProjectsManager.deleteProject(widget.project);
+    Navigator.pop(
+        context
     );
   }
 
@@ -47,6 +55,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
                 ),
                 ElevatedButton(
                     onPressed: goToSRS, child: const Text('Generate SRS')),
+                ElevatedButton(
+                    onPressed: deleteProject, child: const Text('Delete project'))
               ],
             ),
           ),
