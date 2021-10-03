@@ -19,16 +19,20 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
   Future<void> loadProjects() async {
     projects = await ProjectsManager.loadProjects();
+    setState(() {});
+  }
+
+  void addSampleProjectWithDefaultConfigurations() {
     Project sampleProject = Project('WeTube', [UserLogin(), UserProfile()],
         [Platforms.android, Platforms.web]);
-    projects.add(sampleProject);
-    setState(() {});
+    ProjectsManager.addProject(sampleProject);
   }
 
   @override
   void initState() {
-    loadProjects();
     super.initState();
+    addSampleProjectWithDefaultConfigurations();
+    loadProjects();
   }
 
   void _goToProject(Project project) async {
@@ -47,6 +51,7 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    loadProjects();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Projects'),
