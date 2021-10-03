@@ -21,4 +21,12 @@ class ProjectsManager {
     projects.add(project);
     return saveProjects(projects);
   }
+
+  static Future<bool> deleteProject(Project projectToDelete) async {
+    List<Project> projects = await loadProjects();
+    projects.remove(
+        projects.firstWhere((project) => project.name == projectToDelete.name));
+
+    return saveProjects(projects);
+  }
 }
