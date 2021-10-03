@@ -67,8 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 10,
                 ),
                 ElevatedButton(
-                    onPressed: goToSRS,
-                    child: const Text('Go to Available features')),
+                    onPressed: goToSRS, child: const Text('Generate SRS')),
               ],
             ),
           ),
