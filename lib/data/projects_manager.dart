@@ -10,15 +10,15 @@ class ProjectsManager {
     return projectsJson.map((e) => Project.fromJson(jsonDecode(e))).toList();
   }
 
-  static Future<void> saveProjects(List<Project> projects) async {
+  static Future<bool> saveProjects(List<Project> projects) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setStringList('projects',
+    return prefs.setStringList('projects',
         projects.map((project) => jsonEncode(project.toJson())).toList());
   }
 
-  static Future<void> addProject(Project project) async {
+  static Future<bool> addProject(Project project) async {
     List<Project> projects = await loadProjects();
     projects.add(project);
-    saveProjects(projects);
+    return saveProjects(projects);
   }
 }
