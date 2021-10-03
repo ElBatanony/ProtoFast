@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/features/user_login.dart';
+import 'package:protofast/features/user_profile.dart';
 import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/srs_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'ProtoFast',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: const MyHomePage(),
     );
@@ -31,37 +32,45 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Project myProject =
-      Project('WeTube', [UserLogin()], [Platforms.android, Platforms.web]);
+  Project myProject = Project('WeTube', [UserLogin(), UserProfile()],
+      [Platforms.android, Platforms.web]);
 
   void goToSRS() {
     setState(() {});
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => SRSScreen(project: myProject)),
+      MaterialPageRoute(builder: (context) => SrsScreen(project: myProject)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ProtoFast'),
-      ),
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Text(
-              'Your Features',
-              style: TextStyle(fontSize: 36),
+        appBar: AppBar(
+          title: const Text('ProtoFast v0.1.0'),
+        ),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text(
+                    'Your Features',
+                    style: TextStyle(fontSize: 36),
+                  ),
+                ),
+                featuresList(myProject.features),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: goToSRS, child: const Text('Generate SRS')),
+              ],
             ),
           ),
-          featuresList(myProject.features),
-          ElevatedButton(onPressed: goToSRS, child: const Text('Generate SRS')),
-        ],
-      ),
-    );
+        ));
   }
 }
 
