@@ -11,7 +11,7 @@ class AvailableFeaturesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Requirements Specifications"),
+        title: const Text("Available Features"),
       ),
       body: Center(
         child: _buildAvailableFeaturesList(),
