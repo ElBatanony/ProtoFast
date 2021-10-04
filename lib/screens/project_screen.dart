@@ -16,11 +16,15 @@ class ProjectScreen extends StatefulWidget {
 class _ProjectScreenState extends State<ProjectScreen> {
   void goToSRS() {
     setState(() {});
-    /*Navigator.push(
+    Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => SrsScreen(project: widget.project)),
-    );*/
+    );
+  }
+
+  void goToFeaturesList() {
+    setState(() {});
 
     Navigator.push(
       context,
@@ -54,8 +58,13 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   height: 10,
                 ),
                 ElevatedButton(
-                    onPressed: goToSRS,
+                    onPressed: goToFeaturesList,
                     child: const Text('See list of available features')),
+                Container(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: goToSRS, child: const Text('Generate SRS')),
               ],
             ),
           ),
