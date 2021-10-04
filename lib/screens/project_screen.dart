@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
+import 'package:protofast/screens/available_features.dart';
 import 'package:protofast/screens/srs_screen.dart';
 
 class ProjectScreen extends StatefulWidget {
@@ -15,10 +16,17 @@ class ProjectScreen extends StatefulWidget {
 class _ProjectScreenState extends State<ProjectScreen> {
   void goToSRS() {
     setState(() {});
-    Navigator.push(
+    /*Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => SrsScreen(project: widget.project)),
+    );*/
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              AvailableFeaturesScreen(project: widget.project)),
     );
   }
 
@@ -46,7 +54,8 @@ class _ProjectScreenState extends State<ProjectScreen> {
                   height: 10,
                 ),
                 ElevatedButton(
-                    onPressed: goToSRS, child: const Text('Generate SRS')),
+                    onPressed: goToSRS,
+                    child: const Text('See list of available features')),
               ],
             ),
           ),
