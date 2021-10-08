@@ -16,6 +16,10 @@ class Project {
     ]);
   }
 
+  void addFeature(Feature feature) {
+    features.add(feature);
+  }
+
   Project.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         features = [],

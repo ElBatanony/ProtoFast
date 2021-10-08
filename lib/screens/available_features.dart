@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:protofast/features/user_content/user_content.dart';
+import 'package:protofast/features/user_login.dart';
+import 'package:protofast/features/user_profile.dart';
+import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
+import 'package:protofast/screens/feature_screen.dart';
+import 'package:protofast/screens/user_content_screen.dart';
 
 class AvailableFeaturesScreen extends StatelessWidget {
   final Project project;
+
   const AvailableFeaturesScreen({Key? key, required this.project})
       : super(key: key);
 
@@ -20,8 +27,13 @@ class AvailableFeaturesScreen extends StatelessWidget {
   }
 
   Widget _buildAvailableFeaturesList() {
+    List<Feature> availableFeatures = [
+      UserLogin(),
+      UserProfile(),
+      UserContent()
+    ];
     return ListView.builder(
-      itemCount: project.features.length,
+      itemCount: availableFeatures.length,
       itemBuilder: (BuildContext context, int index) {
         // ignore: unnecessary_new
         return new GestureDetector(
@@ -45,13 +57,27 @@ class AvailableFeaturesScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          project.features[index].name,
+                          availableFeatures[index].name,
                           textAlign: TextAlign.left,
                           style: const TextStyle(fontSize: 20),
                           maxLines: 1,
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            StatelessWidget screen;
+                            if (index == 0) {
+                              screen = FeatureScreen(feature: UserLogin());
+                            } else if (index == 1) {
+                              screen = FeatureScreen(feature: UserProfile());
+                            } else {
+                              screen = const UserContentScreen();
+                            }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => screen),
+                            );
+                            project.addFeature(availableFeatures[index]);
+                          },
                           child: Container(
                               margin: const EdgeInsets.all(0.0),
                               child: const Icon(

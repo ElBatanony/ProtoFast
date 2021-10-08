@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/models/feature.dart';
 import 'package:protofast/models/project.dart';
+import 'package:protofast/screens/available_features.dart';
 import 'package:protofast/screens/srs_screen.dart';
 
 class ProjectScreen extends StatefulWidget {
@@ -19,6 +20,17 @@ class _ProjectScreenState extends State<ProjectScreen> {
       context,
       MaterialPageRoute(
           builder: (context) => SrsScreen(project: widget.project)),
+    );
+  }
+
+  void goToFeaturesList() {
+    setState(() {});
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              AvailableFeaturesScreen(project: widget.project)),
     );
   }
 
@@ -43,6 +55,12 @@ class _ProjectScreenState extends State<ProjectScreen> {
                 _projectInfoWidget(widget.project),
                 featuresList(widget.project.features),
                 const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                    onPressed: goToFeaturesList,
+                    child: const Text('See list of available features')),
+                Container(
                   height: 10,
                 ),
                 ElevatedButton(
