@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:protofast/features/user_login.dart';
@@ -20,9 +22,9 @@ abstract class Feature {
         featureNameWidget(),
         ...configs
             .map((config) => Text(
-                  config.generateSpecifications(),
-                  textAlign: TextAlign.center,
-                ))
+          config.generateSpecifications(),
+          textAlign: TextAlign.center,
+        ))
             .toList()
       ]),
     );
@@ -56,20 +58,21 @@ abstract class Feature {
   static List<Feature> fromJson(Map<String, dynamic> projectJson) {
     for (var entry in projectJson.entries) {
       if (entry.key == "features") {
-        var values = List<String>.from(entry.value);
+        var values = List<LinkedHashMap<String, dynamic>>.from(entry.value);
         return castStringToFeatures(values);
       }
     }
-   return [];
+    return [];
   }
 
-  static List<Feature> castStringToFeatures(List<String> features) {
+  static List<Feature> castStringToFeatures(
+      List<LinkedHashMap<String, dynamic>> features) {
     List<Feature> featureList = [];
-    for (String featureName in  features) {
-      if (featureName == "User Login") {
-        featureList.add(UserLogin()) ;
+    for (LinkedHashMap<String, dynamic> feature in features) {
+      if (feature['name'] == "User Login") {
+        featureList.add(UserLogin());
       }
-      if (featureName == "User Profile") {
+      if (feature['name'] == "User Profile") {
         featureList.add(UserProfile());
       }
     }

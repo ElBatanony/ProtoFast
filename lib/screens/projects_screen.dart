@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/data/projects_manager.dart';
+import 'package:protofast/features/user_login.dart';
+import 'package:protofast/features/user_profile.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/new_project_screen.dart';
 import 'package:protofast/screens/project_screen.dart';
-
-import 'package:protofast/features/user_login.dart';
-import 'package:protofast/features/user_profile.dart';
 
 class ProjectsScreen extends StatefulWidget {
   const ProjectsScreen({Key? key}) : super(key: key);
@@ -51,7 +50,6 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    loadProjects();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Projects'),

@@ -24,19 +24,27 @@ class Project {
   static List<Platforms> platformFromJson(Map<String, dynamic> json) {
     List<Platforms> platforms = [];
     var platformNames;
-    if (json['platforms'] == null) return [];
+    if (json['platforms'] == null)
+      return [];
     else {
       platformNames = List<String>.from(json['platforms']);
     }
     for (String platform in platformNames) {
-      platforms.add(Platforms.values.singleWhere((value) => value.toString() == platform));
+      platforms.add(Platforms.values
+          .singleWhere((value) => value.toString() == platform));
     }
     return platforms;
   }
 
-  Map<String, dynamic> toJson() =>
-      {'name': name,
-        'features': [features.map((feature) => feature.toJson())],
-        'platforms': [platforms.map((platform) => {'platform': platform.toString()})]
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    if (this.features != null) {
+      data['features'] = this.features.map((v) => v.toJson()).toList();
+    }
+    if (this.platforms != null) {
+      data['platforms'] = this.platforms.map((v) => v.toString()).toList();
+    }
+    return data;
+  }
 }

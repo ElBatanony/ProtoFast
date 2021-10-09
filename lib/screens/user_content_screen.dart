@@ -1,9 +1,6 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:protofast/features/user_content/photos.dart';
 import 'package:protofast/features/user_content/videos.dart';
-import 'package:protofast/models/feature.dart';
 import 'package:protofast/screens/feature_screen.dart';
 
 class UserContentScreen extends StatelessWidget {
