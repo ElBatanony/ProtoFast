@@ -18,7 +18,9 @@ class ProjectsManager {
 
   static Future<bool> addProject(Project project) async {
     List<Project> projects = await loadProjects();
-    projects.add(project);
+    if (!projects.contains(project)) {
+      projects.add(project);
+    }
     return saveProjects(projects);
   }
 
