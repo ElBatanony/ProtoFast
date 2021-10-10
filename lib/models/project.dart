@@ -23,10 +23,10 @@ class Project {
 
   static List<Platforms> platformFromJson(Map<String, dynamic> json) {
     List<Platforms> platforms = [];
-    var platformNames;
-    if (json['platforms'] == null)
+    List<String> platformNames;
+    if (json['platforms'] == null) {
       return [];
-    else {
+    } else {
       platformNames = List<String>.from(json['platforms']);
     }
     for (String platform in platformNames) {
@@ -38,13 +38,19 @@ class Project {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    if (this.features != null) {
-      data['features'] = this.features.map((v) => v.toJson()).toList();
-    }
-    if (this.platforms != null) {
-      data['platforms'] = this.platforms.map((v) => v.toString()).toList();
-    }
+    data['name'] = name;
+    data['features'] = features.map((v) => v.toJson()).toList();
+    data['platforms'] = platforms.map((v) => v.toString()).toList();
     return data;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Project &&
+          runtimeType == other.runtimeType &&
+          name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }
