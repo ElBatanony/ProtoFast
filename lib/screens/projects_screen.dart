@@ -25,27 +25,31 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     Project sampleProject = Project('WeTube', [UserLogin(), UserProfile()],
         [Platforms.android, Platforms.web]);
     ProjectsManager.addProject(sampleProject);
+    if (projects.contains(sampleProject)) {
+      projects.add(sampleProject);
+    }
+    setState(() {});
   }
 
   @override
   void initState() {
-    super.initState();
     addSampleProjectWithDefaultConfigurations();
     loadProjects();
+    super.initState();
   }
 
   void _goToProject(Project project) async {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ProjectScreen(project: project)),
-    );
+    ).then((value) => loadProjects());
   }
 
   void _goToCreateProject() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const NewProjectScreen()),
-    );
+    ).then((value) => loadProjects());
   }
 
   @override
