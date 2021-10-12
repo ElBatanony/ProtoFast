@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/data/projects_manager.dart';
+import 'package:protofast/features/user_login.dart';
+import 'package:protofast/features/user_profile.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/new_project_screen.dart';
 import 'package:protofast/screens/project_screen.dart';
-
-import 'package:protofast/features/user_login.dart';
-import 'package:protofast/features/user_profile.dart';
 
 class ProjectsScreen extends StatefulWidget {
   const ProjectsScreen({Key? key}) : super(key: key);
@@ -19,14 +18,22 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
 
   Future<void> loadProjects() async {
     projects = await ProjectsManager.loadProjects();
+    setState(() {});
+  }
+
+  void addSampleProjectWithDefaultConfigurations() {
     Project sampleProject = Project('WeTube', [UserLogin(), UserProfile()],
         [Platforms.android, Platforms.web]);
-    projects.add(sampleProject);
+    ProjectsManager.addProject(sampleProject);
+    if (projects.contains(sampleProject)) {
+      projects.add(sampleProject);
+    }
     setState(() {});
   }
 
   @override
   void initState() {
+    addSampleProjectWithDefaultConfigurations();
     loadProjects();
     super.initState();
   }
@@ -35,14 +42,14 @@ class _ProjectsScreenState extends State<ProjectsScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ProjectScreen(project: project)),
-    );
+    ).then((value) => loadProjects());
   }
 
   void _goToCreateProject() {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const NewProjectScreen()),
-    );
+    ).then((value) => loadProjects());
   }
 
   @override

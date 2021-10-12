@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:protofast/models/feature.dart';
 
-enum Platforms { android, iOS, web, windwos, macOS, linux }
+enum Platforms { android, iOS, web, windows, macOS, linux }
 
 class Project {
   String name;
@@ -18,12 +18,39 @@ class Project {
 
   Project.fromJson(Map<String, dynamic> json)
       : name = json['name'],
-        features = [],
-        platforms = [];
+        features = Feature.fromJson(json),
+        platforms = platformFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'name': name,
-      };
+  static List<Platforms> platformFromJson(Map<String, dynamic> json) {
+    List<Platforms> platforms = [];
+    List<String> platformNames;
+    if (json['platforms'] == null) {
+      return [];
+    } else {
+      platformNames = List<String>.from(json['platforms']);
+    }
+    for (String platform in platformNames) {
+      platforms.add(Platforms.values
+          .singleWhere((value) => value.toString() == platform));
+    }
+    return platforms;
+  }
 
-  // TODO: save and load project and features (use Shared Prefrences)
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = name;
+    data['features'] = features.map((v) => v.toJson()).toList();
+    data['platforms'] = platforms.map((v) => v.toString()).toList();
+    return data;
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Project &&
+          runtimeType == other.runtimeType &&
+          name == other.name;
+
+  @override
+  int get hashCode => name.hashCode;
 }
