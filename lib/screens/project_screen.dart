@@ -40,8 +40,10 @@ class _ProjectScreenState extends State<ProjectScreen> {
         appBar: AppBar(
           title: Text(widget.project.name),
         ),
+        resizeToAvoidBottomInset: true,
         body: Center(
-          child: Padding(
+          child: SingleChildScrollView(
+              child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
@@ -67,7 +69,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                     onPressed: goToSRS, child: const Text('Generate SRS')),
               ],
             ),
-          ),
+          )),
         ));
   }
 }
