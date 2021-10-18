@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:protofast/models/feature.dart';
 
@@ -28,6 +29,12 @@ class Project {
   Map<String, dynamic> toJson() => {
         'name': name,
       };
+
+  factory Project.fromSnapshot(DocumentSnapshot snapshot) {
+    final newProject = Project.fromJson(snapshot.data() as Map<String, dynamic>);
+    newProject.name = snapshot.reference.id;
+    return newProject;
+  }
 
   // TODO: save and load project and features (use Shared Prefrences)
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:protofast/data/project_repo.dart';
 import 'package:protofast/data/projects_manager.dart';
 import 'package:protofast/models/project.dart';
 import 'package:protofast/screens/project_screen.dart';
+
 
 class NewProjectScreen extends StatefulWidget {
   const NewProjectScreen({Key? key}) : super(key: key);
@@ -15,6 +17,8 @@ class _NewProjectScreenState extends State<NewProjectScreen> {
 
   void _createProject() async {
     Project newProject = Project(projectNameController.text, [], []);
+    ProjectRepository projectRepository = ProjectRepository();
+    projectRepository.addProject(newProject);
     await ProjectsManager.addProject(newProject);
     Navigator.pop(context);
     Navigator.push(

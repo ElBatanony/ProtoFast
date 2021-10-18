@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "868414935769",
+    "project_id": "protofast-2b73c",
+    "storage_bucket": "protofast-2b73c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:868414935769:android:31effc79f0efddf863a4c8",
+        "android_client_info": {
+          "package_name": "com.example.protofast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "868414935769-jhjgdh654tqf1abib2q8nl0jg9f7qmf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7m_8-SKH1p0I6x_e_EOzKWJMaAf2uIcY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "868414935769-jhjgdh654tqf1abib2q8nl0jg9f7qmf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
